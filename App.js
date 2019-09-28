@@ -4,16 +4,12 @@ import axios from 'axios'
 
 export default class App extends React.Component {
 
-  //API_KEY = "AIzaSyBzMXePBfw0sb7J4P4xPwkVVIQoVCXVqEc"
-
-
   state = {
     text: 'Umbrellas for U , 7T for Us',
     imgUri:
       'https://shop.classicteamlotus.co.uk/ekmps/shops/classiclotus/images/classic-team-lotus-umbrella-231-p.jpg',
     videoUri: 'http://www.youtube.com/watch?v=c0tZkB7NupA',
     thumbnail: 'https://www.elegantthemes.com/blog/wp-content/uploads/2019/04/change-wordpress-thumbnail-size-featured-image.jpg',
-    vId: 'KVZ-P-ZI6W4'
   };
 
   changeState = () => {
@@ -49,7 +45,6 @@ export default class App extends React.Component {
 
   render() {
     return (
-      // Try setting `flexDirection` to `column`.
       <View style={styles.container}>
         <View style={[{ flex: 1 }, styles.elementsContainer]}>
           <View
