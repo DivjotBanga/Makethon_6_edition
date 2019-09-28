@@ -1,0 +1,66 @@
+<!-- <div class="example-container">
+    <h2>To do</h2>
+
+    <div cdkDropList #todoList="cdkDropList" [cdkDropListData]="todo" [cdkDropListConnectedTo]="[doneList]" class="example-list"
+        (cdkDropListDropped)="drop($event)">
+        <div class="example-box" *ngFor="let item of todo" cdkDrag>{{item.text}}</div>
+    </div>
+</div>
+
+<div class="example-container">
+    <h2>Done</h2>
+
+    <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="done" [cdkDropListConnectedTo]="[todoList]" class="example-list"
+        (cdkDropListDropped)="drop($event)">
+        <div class="example-box" *ngFor="let item of done" cdkDrag>{{item}}</div>
+    </div>
+    <mat-grid-list cdkDropList #doneList="cdkDropList" [cdkDropListData]="tiles" [cdkDropListConnectedTo]="[todoList]" class="example-list" (cdkDropListDropped)="drop($event)" cols="4" rowHeight="100px">
+            <mat-grid-tile
+                *ngFor="let tile of tiles"
+                [colspan]="tile.cols"
+                [rowspan]="tile.rows"
+                [style.background]="tile.color"
+                cdkDrag>
+              {{tile.text}}
+            </mat-grid-tile>
+          </mat-grid-list>
+</div> -->
+<div class="flexcontainer" fxLayoutGap="20px">
+    <div class="adListContainer">
+        <!-- <tree-root [nodes]="nodes" [options]="options"></tree-root> -->
+        <div cdkDropList #todoList="cdkDropList" [cdkDropListData]="ads" [cdkDropListConnectedTo]="[doneList]" class="example-list"
+            (cdkDropListDropped)="drop($event)">
+            <div class="example-box" *ngFor="let ad of ads" cdkDrag>{{ad.text_content}}</div>
+        </div>
+    </div>
+    <div class="addLayoutContainer">
+        <mat-grid-list cols="4" rowHeight="200px">
+            <mat-grid-tile *ngFor="let tile of tiles;let i=index" [colspan]="tile.cols" [rowspan]="tile.rows" [style.background]="tile.color">
+                <div class="flex-container">
+                    <div fxFlex="10">
+                        <mat-form-field style="top:30%">
+                            <mat-label>Select Ad</mat-label>
+                            <mat-select (selectionChange)="modifyTemplateData($event.value,i)">
+                                <mat-option *ngFor="let ad of ads" [value]="ad">
+                                    {{ad.text_content}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div fxFlex="90">
+                        <div [ngSwitch]="this.templateData[i]?.ad_type">
+                            <p *ngSwitchCase="'string'">{{this.templateData[i]?.text_content}}</p>
+                            <div *ngSwitchCase="'image'">
+                                <img height="190px" width="100%" src='{{ this.baseUrl}}{{this.templateData[i]?.ad_path}}'>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </mat-grid-tile>
+        </mat-grid-list>
+        <div class="example-button-row">
+            <button [disabled]="this.templateData.length<1" mat-raised-button color="primary" (click)="saveTemplate()">Save Template</button>
+        </div>
+    </div>
+
+</div>

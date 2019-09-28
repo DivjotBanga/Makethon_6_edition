@@ -1,0 +1,19 @@
+.example-card {
+    max-width: 60%;
+    margin: auto;
+  }
+
+  .flexcontainer {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    background-color: #edf6fa;
+    border: 1px solid #3a99c7;
+    padding:10px; 
+  }
+
+  .example-card .mat-card-image{
+    max-height:400px
+    }
+  

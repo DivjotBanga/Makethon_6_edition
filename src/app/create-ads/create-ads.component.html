@@ -1,0 +1,23 @@
+<div class="flex-container">
+    <div fxFlex="30">
+        <div cdkDropList #todoList="cdkDropList" [cdkDropListData]="ads" [cdkDropListConnectedTo]="[doneList]" class="example-list"
+            (cdkDropListDropped)="drop($event)">
+            <div class="example-box" *ngFor="let ad of ads" cdkDrag>{{ad.text_content}}</div>
+        </div>
+    </div>
+    <div fxFlex="70">
+        <mat-card class="example-card">
+            <mat-card-header>
+            </mat-card-header>
+            <img *ngIf="fileuploaded" mat-card-image [src]="uploadedFilePath" alt="Snapshot of a uploaded file.">
+            <mat-card-content>
+                <mat-card-title *ngIf="!fileuploaded">Upload File Preview</mat-card-title>
+            </mat-card-content>
+            <mat-card-actions>
+                <div style="text-align:center">
+                    <app-material-file-upload (complete)="onFileComplete($event)"></app-material-file-upload>
+                </div>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+</div>
